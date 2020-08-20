@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MovieCustomerMvcApp.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customer List</h2>
+<table class="table table-bordered  table-striped">
+    <thead>
+        <tr>
+            <th>Customer name</th>
+
+            <th>Date of birth</th>
+            <th>Discount rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var customer in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+
+            <td>@customer.DateOfBirth.ToString("dd/MM/yyyy")</td>
+            <td>@customer.MembershipType.DiscountRate%</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
